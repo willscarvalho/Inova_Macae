@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package inova.model;
 
 import java.io.Serializable;
@@ -10,47 +5,58 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
- *
- * @author Arnald Queiroga
- */
+*
+* @author willian
+*
+**/
+
 @Entity
-public class Coleta implements Serializable {
+@Table(name="coleta")
+public class Coleta implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String dtCadastro;
-    private Integer idUsuarioCadastro;
+    private String dataCadastro;
+    private Long idUsuarioCadastro;
     private String ano;
     private String mesReferencia;
-    private float coleta;
+    private Number coleta;
     private String variaveis;
-    private Integer idIndicador;
+    private Long idIndicador;
     private String status;
-    private String observacao;
-    private String idAcessoColeta;
+    private Long idAcessoColeta;
 
-    public String getDtCadastro() {
-        return dtCadastro;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setDtCadastro(String dtCadastro) {
-        this.dtCadastro = dtCadastro;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Integer getIdUsuarioCadastro() {
-        return idUsuarioCadastro;
+    public String getDataCadastro() {
+        return this.dataCadastro;
     }
 
-    public void setIdUsuarioCadastro(Integer idUsuarioCadastro) {
+    public void setDataCadastro(String dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public Long getIdUsuarioCadastro() {
+        return this.idUsuarioCadastro;
+    }
+
+    public void setIdUsuarioCadastro(Long idUsuarioCadastro) {
         this.idUsuarioCadastro = idUsuarioCadastro;
     }
 
     public String getAno() {
-        return ano;
+        return this.ano;
     }
 
     public void setAno(String ano) {
@@ -58,68 +64,53 @@ public class Coleta implements Serializable {
     }
 
     public String getMesReferencia() {
-        return mesReferencia;
+        return this.mesReferencia;
     }
 
     public void setMesReferencia(String mesReferencia) {
         this.mesReferencia = mesReferencia;
     }
 
-    public float getColeta() {
-        return coleta;
+    public Number getColeta() {
+        return this.coleta;
     }
 
-    public void setColeta(float coleta) {
+    public void setColeta(Number coleta) {
         this.coleta = coleta;
     }
 
     public String getVariaveis() {
-        return variaveis;
+        return this.variaveis;
     }
 
     public void setVariaveis(String variaveis) {
         this.variaveis = variaveis;
     }
 
-    public Integer getIdIndicador() {
-        return idIndicador;
+    public Long getIdIndicador() {
+        return this.idIndicador;
     }
 
-    public void setIdIndicador(Integer idIndicador) {
+    public void setIdIndicador(Long idIndicador) {
         this.idIndicador = idIndicador;
     }
 
     public String getStatus() {
-        return status;
+        return this.status;
     }
 
     public void setStatus(String status) {
         this.status = status;
     }
 
-    public String getObservacao() {
-        return observacao;
+    public Long getIdAcessoColeta() {
+        return this.idAcessoColeta;
     }
 
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-
-    public String getIdAcessoColeta() {
-        return idAcessoColeta;
-    }
-
-    public void setIdAcessoColeta(String idAcessoColeta) {
+    public void setIdAcessoColeta(Long idAcessoColeta) {
         this.idAcessoColeta = idAcessoColeta;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     @Override
     public int hashCode() {
@@ -130,7 +121,6 @@ public class Coleta implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Coleta)) {
             return false;
         }
@@ -145,5 +135,5 @@ public class Coleta implements Serializable {
     public String toString() {
         return "inova.model.Coleta[ id=" + id + " ]";
     }
-
+    
 }

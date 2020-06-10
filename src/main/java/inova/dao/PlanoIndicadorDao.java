@@ -1,6 +1,6 @@
 package inova.dao;
 
-import inova.model.Coleta;
+import inova.model.PlanoIndicador;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -14,13 +14,13 @@ import javax.persistence.Query;
 **/
 
 @Stateless
-public class ColetaDao {
+public class PlanoIndicadorDao {
 
     @PersistenceContext
     EntityManager em;
 
-    public List<Coleta> getColetas() {
-        Query q = em.createQuery("SELECT c FROM Coleta c ORDER BY c.id");
+    public List<PlanoIndicador> getPlanosIndicadores() {
+        Query q = em.createQuery("SELECT pi FROM PlanoIndicador pi ORDER BY pi.id");
         return q.getResultList();
     }
     

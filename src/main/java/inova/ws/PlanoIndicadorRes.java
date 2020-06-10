@@ -1,7 +1,7 @@
 package inova.ws;
 
-import inova.dao.ColetaDao;
-import inova.model.Coleta;
+import inova.dao.PlanoIndicadorDao;
+import inova.model.PlanoIndicador;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -18,19 +18,19 @@ import javax.ws.rs.core.MediaType;
 **/
 
 @Named
-@Path("coleta")
+@Path("planoindicador")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ColetaRes {
-    
+public class PlanoIndicadorRes {
+                
     @EJB 
-    ColetaDao coletaDao;
+    PlanoIndicadorDao planoIndicadorDao;
 
     
     @GET
-    @Path("buscarcoletas")
-    public List<Coleta> buscarColetas() {
-        return coletaDao.getColetas();
+    @Path("buscarplanosindicadores")
+    public List<PlanoIndicador> buscarPlanosIndicador() {
+        return planoIndicadorDao.getPlanosIndicadores();
     }
 
 }
