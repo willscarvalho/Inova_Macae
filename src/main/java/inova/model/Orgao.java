@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Arnald Queiroga
+ * @author Arnald da Costa Queiroga Queiroga
  */
 @Entity
 public class Orgao implements Serializable {
