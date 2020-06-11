@@ -13,10 +13,7 @@ import javax.ws.rs.core.Application;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inova.ws;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
 
 @ApplicationPath("rest")

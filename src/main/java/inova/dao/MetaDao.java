@@ -1,6 +1,6 @@
 package inova.dao;
 
-import inova.model.Coleta;
+import inova.model.Meta;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,20 +8,19 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
-*
-* @author willian
-*
-**/
+ *
+ * @author willian
+ *
+ **/
 
 @Stateless
-public class ColetaDao {
+public class MetaDao {
 
     @PersistenceContext
     EntityManager em;
 
-    public List<Coleta> getColetas() {
-        Query q = em.createQuery("SELECT c FROM Coleta c ORDER BY c.id");
+    public List<Meta> getMetas() {
+        Query q = em.createQuery("SELECT m FROM Meta m ORDER BY m.id");
         return q.getResultList();
     }
-
 }

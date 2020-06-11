@@ -1,7 +1,7 @@
 package inova.ws;
 
-import inova.dao.ColetaDao;
-import inova.model.Coleta;
+import inova.dao.MetaDao;
+import inova.model.Meta;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -12,24 +12,24 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
-*
-* @author willian
-*
-**/
+ *
+ * @author willian
+ *
+ **/
 
 @Named
-@Path("coleta")
+@Path("meta")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class ColetaRes {
+public class MetaRes {
 
     @EJB
-    ColetaDao coletaDao;
+    MetaDao metaDao;
 
     @GET
-    @Path("buscarcoletas")
-    public List<Coleta> buscarColetas() {
-        return coletaDao.getColetas();
+    @Path("buscarmetas")
+    public List<Meta> buscarMetas() {
+        return metaDao.getMetas();
     }
 
 }

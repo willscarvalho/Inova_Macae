@@ -135,5 +135,5 @@ public class Coleta implements Serializable{
     public String toString() {
         return "inova.model.Coleta[ id=" + id + " ]";
     }
-    
+
 }
