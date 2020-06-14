@@ -6,10 +6,12 @@
 package inova.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -28,6 +30,13 @@ public class Orgao implements Serializable {
     private String cdAtivo;
     private Integer idOrgaoMaior;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald
+    @OneToMany
+    private List<Indicador> indicadores; // Porque cada Orgao tem uma lista de Indicadores 
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    
     public int getNmOrgao() {
         return nmOrgao;
     }

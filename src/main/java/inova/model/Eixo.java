@@ -6,10 +6,12 @@
 package inova.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,6 +28,12 @@ public class Eixo implements Serializable {
     private Integer idUsuarioCadastro;
     private String descricao;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald
+    @OneToMany
+    private List<Tema> temas; // Porque cada Eixo, tem uma lista de Temas 
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
     public String getDtCadastro() {
         return dtCadastro;
     }

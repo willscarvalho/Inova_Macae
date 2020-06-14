@@ -5,26 +5,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
-*
-* @author willian
-*
-**/
-
+ *
+ * @author willian
+ *
+ *
+ */
 @Entity
-@Table(name="planoindicador")
-public class PlanoIndicador implements Serializable{
+@Table(name = "planoindicador")
+public class PlanoIndicador implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idPlano;
-    private Long idIndicador;
     private String dtCadastro;
     private Long idUsuarioCadastro;
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald   (RELAÇÃO DE MUITO PARA UM ENTRE PLANO INDICADOR INDICADOR X PLANO)
+    @ManyToOne // MUITOS PlanosIndicadores para um Plano
+    @JoinColumn(name = "idPlano", referencedColumnName = "id")
+    private Plano plano;
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald   (RELAÇÃO DE MUITO PARA UM ENTRE PLANO INDICADOR INDICADOR X INDICADOR)    
+    @ManyToOne // MUITOS Planos Indicadores para UM indicador
+    @JoinColumn(name = "idIndicador", referencedColumnName = "id")
+    private Indicador indicador;
+    
+    
+    
 
     public Long getId() {
         return this.id;
@@ -34,21 +48,25 @@ public class PlanoIndicador implements Serializable{
         this.id = id;
     }
 
-    public Long getIdPlano() {
-        return this.idPlano;
+    // Inserido por Arnald ///////////////////////////////////////////////////////////
+    public Plano getPlano() {
+        return plano;
     }
 
-    public void setIdPlano(Long idPlano) {
-        this.idPlano = idPlano;
+    public void setPlano(Plano plano) {
+        this.plano = plano;
     }
 
-    public Long getIdIndicador() {
-        return this.idIndicador;
+////////////////////////////////////////////////////////////////////////////////////////
+
+    public Indicador getIndicador() {
+        return indicador;
     }
 
-    public void setIdIndicador(Long idIndicador) {
-        this.idIndicador = idIndicador;
+    public void setIndicador(Indicador indicador) {
+        this.indicador = indicador;
     }
+
 
     public String getDtCadastro() {
         return this.dtCadastro;

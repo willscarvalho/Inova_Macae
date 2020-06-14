@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -24,7 +26,6 @@ public class SerieHistorica implements Serializable {
     private Long id;
     private String ano;
     private float coleta;
-    private Integer idIndicador;
     private String status;
     private String observacao;
     private float meta;
@@ -32,6 +33,15 @@ public class SerieHistorica implements Serializable {
     private Integer idUsuarioCadastro;
     private String excluido;
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald
+    @ManyToOne // MUITAS SeriesHistóricas para UM Indicador    
+    @JoinColumn(name = "idIndicador", referencedColumnName = "id")
+    private Indicador indicador;
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
     public String getAno() {
         return ano;
     }
@@ -48,14 +58,16 @@ public class SerieHistorica implements Serializable {
         this.coleta = coleta;
     }
 
-    public Integer getIdIndicador() {
-        return idIndicador;
+    // Feito por Arnald /////////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+    public Indicador getIndicador() {
+        return indicador;
     }
 
-    public void setIdIndicador(Integer idIndicador) {
-        this.idIndicador = idIndicador;
+    public void setIndicador(Indicador indicador) {
+        this.indicador = indicador;
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public String getStatus() {
         return status;
     }
@@ -103,8 +115,6 @@ public class SerieHistorica implements Serializable {
     public void setExcluido(String excluido) {
         this.excluido = excluido;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -138,5 +148,5 @@ public class SerieHistorica implements Serializable {
     public String toString() {
         return "inova.model.serieHistorica[ id=" + id + " ]";
     }
-    
+
 }

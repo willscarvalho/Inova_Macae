@@ -1,21 +1,23 @@
 package inova.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
-*
-* @author willian
-*
-**/
-
+ *
+ * @author willian
+ *
+ *
+ */
 @Entity
-@Table(name="plano")
-public class Plano implements Serializable{
+@Table(name = "plano")
+public class Plano implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -32,6 +34,12 @@ public class Plano implements Serializable{
     private String observacao;
     private String dtCadastro;
     private Long idUsuarioCadastro;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald
+    @OneToMany
+    private List<PlanoIndicador> planoindicadores; // Porque cada Plano, tem uma lista de Plano Indicadores
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public Long getId() {
         return this.id;
@@ -152,6 +160,5 @@ public class Plano implements Serializable{
     public String toString() {
         return "inova.model.Plano[ id=" + id + " ]";
     }
-
 
 }

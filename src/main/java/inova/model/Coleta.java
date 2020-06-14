@@ -5,17 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
-*
-* @author willian
-*
-**/
-
+ *
+ * @author willian
+ *
+ *
+ */
 @Entity
-@Table(name="coleta")
-public class Coleta implements Serializable{
+@Table(name = "coleta")
+public class Coleta implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -27,9 +29,17 @@ public class Coleta implements Serializable{
     private String mesReferencia;
     private Number coleta;
     private String variaveis;
-    private Long idIndicador;
     private String status;
     private Long idAcessoColeta;
+    
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald
+    @ManyToOne // MUITAS Coletas para UM Indicador
+    @JoinColumn(name = "idIndicador", referencedColumnName = "id")
+    private Indicador indicador;
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public Long getId() {
         return this.id;
@@ -87,14 +97,16 @@ public class Coleta implements Serializable{
         this.variaveis = variaveis;
     }
 
-    public Long getIdIndicador() {
-        return this.idIndicador;
+    // Inserido por Arnald ///////////////////////////////////////////////////////////
+    public Indicador getIndicador() {
+        return indicador;
     }
 
-    public void setIdIndicador(Long idIndicador) {
-        this.idIndicador = idIndicador;
+    public void setIndicador(Indicador indicador) {
+        this.indicador = indicador;
     }
 
+    /////////////////////////////////////////////////////////////////////////////////
     public String getStatus() {
         return this.status;
     }
@@ -110,7 +122,6 @@ public class Coleta implements Serializable{
     public void setIdAcessoColeta(Long idAcessoColeta) {
         this.idAcessoColeta = idAcessoColeta;
     }
-
 
     @Override
     public int hashCode() {

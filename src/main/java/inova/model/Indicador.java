@@ -6,10 +6,14 @@
 package inova.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -29,13 +33,11 @@ public class Indicador implements Serializable {
     private String dtReferencia;
     private String dtPrazo;
     private String tecnicoResponsavel;
-    private Integer idTema;
     private String unidade;
     private String fonte;
     private String ativo;
     private String publico;
     private Integer idPeriodicidade;
-    private Integer idOrgao;
     private String dtCadastro;
     private String tipo;
     private Integer idUsuarioCadastro;
@@ -43,7 +45,45 @@ public class Indicador implements Serializable {
     private String cumulativo;
     private float valorAlvo;
     private String previsaoDoAlvo;
+    
+     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald    (RELAÇÃO DE MUITO PARA UM ENTRE INDICADOR X TEMA)
+    @ManyToOne // MUITOS Indicadores para UM Tema
+    @JoinColumn(name = "idTema", referencedColumnName = "id")
+    private Tema tema;
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Inserido por Arnald    (RELAÇÃO DE MUITO PARA UM ENTRE INDICADOR X ORGAO)    
+    @ManyToOne // MUITOS Indicadores para UM Orgao
+    @JoinColumn(name = "idOrgao", referencedColumnName = "id")
+    private Orgao orgao;
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald 
+    // ( RELACIONAMENTO ENTRE SERIE HISTORICA X INDICADOR )
+    @OneToMany
+    private List<SerieHistorica> seriehistoricas; // Porque cada Indicador, tem uma lista de series historicas 
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////  
+    // Inserido por Arnald 
+    // ( RELACIONAMENTO ENTRE SERIE COLETA X INDICADOR )
+    @OneToMany
+    private List<Coleta> coletas; // Porque cada Indicador, tem uma lista de Coletas 
+ 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////    
+    // Inserido por Arnald
+    @OneToMany
+    private List<PlanoIndicador> planoindicadores; // Porque cada Indicador, tem uma lista de Plano Indicadores 
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
     public String getDescricaoDaMeta() {
         return descricaoDaMeta;
     }
@@ -100,13 +140,31 @@ public class Indicador implements Serializable {
         this.tecnicoResponsavel = tecnicoResponsavel;
     }
 
-    public Integer getIdTema() {
-        return idTema;
+    public Tema getTema() {
+        return tema;
     }
 
-    public void setIdTema(Integer idTema) {
-        this.idTema = idTema;
+    public void setTema(Tema tema) {
+        this.tema = tema;
     }
+
+    public List<SerieHistorica> getSeriehistoricas() {
+        return seriehistoricas;
+    }
+
+    public void setSeriehistoricas(List<SerieHistorica> seriehistoricas) {
+        this.seriehistoricas = seriehistoricas;
+    }
+
+    public List<Coleta> getColetas() {
+        return coletas;
+    }
+
+    public void setColetas(List<Coleta> coletas) {
+        this.coletas = coletas;
+    }
+
+ 
 
     public String getUnidade() {
         return unidade;
@@ -148,14 +206,15 @@ public class Indicador implements Serializable {
         this.idPeriodicidade = idPeriodicidade;
     }
 
-    public Integer getIdOrgao() {
-        return idOrgao;
+    public Orgao getOrgao() {
+        return orgao;
     }
 
-    public void setIdOrgao(Integer idOrgao) {
-        this.idOrgao = idOrgao;
+    public void setOrgao(Orgao orgao) {
+        this.orgao = orgao;
     }
 
+  
     public String getDtCadastro() {
         return dtCadastro;
     }
@@ -211,12 +270,6 @@ public class Indicador implements Serializable {
     public void setPrevisaoDoAlvo(String previsaoDoAlvo) {
         this.previsaoDoAlvo = previsaoDoAlvo;
     }
-    
-    
-    
-    
-    
-    
 
     public Long getId() {
         return id;
@@ -250,5 +303,5 @@ public class Indicador implements Serializable {
     public String toString() {
         return "inova.model.Indicador[ id=" + id + " ]";
     }
-    
+
 }
