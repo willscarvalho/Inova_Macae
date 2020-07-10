@@ -31,4 +31,13 @@ public class TemaDao {
         return q.getResultList();
     }
     
+    // Buscar Temas por Eixo
+    public List getTemasPorEixo(Integer idEixo){
+        Query q = em.createQuery("select t.descricao from Tema t where t.eixo.id=:e");
+        q.setParameter("e", idEixo);        
+        return q.getResultList();
+        
+    }    
+    
+    
 }

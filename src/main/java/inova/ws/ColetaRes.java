@@ -8,6 +8,7 @@ import javax.inject.Named;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -31,5 +32,23 @@ public class ColetaRes {
     public List<Coleta> buscarColetas() {
         return coletaDao.getColetas();
     }
+    
+//       @GET
+//    @Path("buscarColetaIndicador/{idTema}/{idEixo}")
+//    public List buscarColetaporIndicador(@PathParam("idTema") Integer idTema, @PathParam("idEixo") Integer idEixo){
+//        return coletaDao.getListColetaporIndicador(idTema, idEixo);
+//    }    
+    
+    
+    
+    // Coleta por Indicador (Responsável por gerar os gráficos finais)
+        @GET
+    @Path("buscarcoletaindicador/{idIndicador}/{idTema}/{idEixo}")
+    public List buscarColetaporIndicador(@PathParam("idIndicador") Integer idIndicador ,@PathParam("idTema") Integer idTema, @PathParam("idEixo") Integer idEixo){
+        return coletaDao.getListColetaporIndicador(idIndicador,idTema, idEixo);
+    }  
+    
 
 }
+
+

@@ -45,5 +45,11 @@ public class IndicadorRes {
         return indicadorDao.getIndicadores(descricao);
     }
     
+     // Indicadores por Tema    
+    @GET
+    @Path("buscarindicadorportema/{idTema}/{idEixo}")
+    public List buscarIndicadorPorTema(@PathParam("idTema") Integer idTema, @PathParam("idEixo") Integer idEixo){
+        return indicadorDao.getListIndicadorPorTema(idTema, idEixo);
+    }
 }
- 
+  

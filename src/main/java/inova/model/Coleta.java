@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author willian
+ * @author willian 
  *
  *
  */
@@ -23,7 +23,7 @@ public class Coleta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String dataCadastro;
+    private String dtCadastro;
     private Long idUsuarioCadastro;
     private String ano;
     private String mesReferencia;
@@ -50,11 +50,11 @@ public class Coleta implements Serializable {
     }
 
     public String getDataCadastro() {
-        return this.dataCadastro;
+        return this.dtCadastro;
     }
 
     public void setDataCadastro(String dataCadastro) {
-        this.dataCadastro = dataCadastro;
+        this.dtCadastro = dataCadastro;
     }
 
     public Long getIdUsuarioCadastro() {

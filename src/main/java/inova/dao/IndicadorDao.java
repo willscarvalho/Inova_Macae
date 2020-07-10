@@ -36,4 +36,16 @@ public class IndicadorDao {
         return q.getResultList();
     }
     
+    
+    // Indicadores por Tema
+       public List getListIndicadorPorTema(Integer idTema, Integer idEixo) {
+        // Query q = em.createQuery("select c from Coleta c where c.indicador.tema.id = :t and c.indicador.tema.eixo.id = :e");
+        Query q = em.createQuery("select i.indicador from Indicador i where i.tema.id = :t and i.tema.eixo.id = :e ");
+        q.setParameter("t", idTema);
+        q.setParameter("e", idEixo);
+        return q.getResultList();
+    }
+    
+   
+    
 }

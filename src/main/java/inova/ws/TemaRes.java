@@ -45,4 +45,11 @@ public class TemaRes {
         return temaDao.getTemas(descricao);
     }
     
+     // Buscar Temas por Eixo    
+    @GET
+    @Path("buscartemaporeixo/{idEixo}")
+    public List getTemasPorEixo(@PathParam("idEixo") Integer idEixo) {
+        return temaDao.getTemasPorEixo(idEixo);
+    }  
+    
 }
