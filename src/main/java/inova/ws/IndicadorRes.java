@@ -55,9 +55,16 @@ public class IndicadorRes {
  
     // Coloquem aqui o comentário    
     @GET
-    @Path("buscarmetacoleta/{idIndicador}/{ano}")
-    public MetaColeta buscarMetaColeta(@PathParam("idIndicador") Integer idIndicador, @PathParam("ano") Integer ano){
+    @Path("buscarmetacoletaporano/{idIndicador}/{ano}")
+    public MetaColeta buscarMetaColetaPorAno(@PathParam("idIndicador") Integer idIndicador, @PathParam("ano") Integer ano){
         return indicadorDao.getMetaColetaAnoPorIndicador(idIndicador, ano);
+    }
+
+    // Coloquem aqui o comentário    
+    @GET
+    @Path("buscarmetacoleta/{idIndicador}")
+    public List<MetaColeta> buscarMetaColeta(@PathParam("idIndicador") Integer idIndicador){
+        return indicadorDao.getMetaColetaPorIndicador(idIndicador);
     }
     
     
