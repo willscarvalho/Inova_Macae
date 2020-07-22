@@ -7,6 +7,7 @@ package inova.ws;
 
 import inova.dao.IndicadorDao;
 import inova.model.Indicador;
+import inova.model.MetaColeta;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -51,5 +52,17 @@ public class IndicadorRes {
     public List buscarIndicadorPorTema(@PathParam("idTema") Integer idTema, @PathParam("idEixo") Integer idEixo){
         return indicadorDao.getListIndicadorPorTema(idTema, idEixo);
     }
+ 
+    // Coloquem aqui o comentário    
+    @GET
+    @Path("buscarmetacoleta/{idIndicador}/{ano}")
+    public MetaColeta buscarMetaColeta(@PathParam("idIndicador") Integer idIndicador, @PathParam("ano") Integer ano){
+        return indicadorDao.getMetaColetaAnoPorIndicador(idIndicador, ano);
+    }
+    
+    
+    
+    
+    
 }
   

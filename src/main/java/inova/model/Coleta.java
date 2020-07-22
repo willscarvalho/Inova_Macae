@@ -25,7 +25,7 @@ public class Coleta implements Serializable {
     private Long id;
     private String dtCadastro;
     private Long idUsuarioCadastro;
-    private String ano;
+    private Integer ano;
     private String mesReferencia;
     private Number coleta;
     private String variaveis;
@@ -65,11 +65,11 @@ public class Coleta implements Serializable {
         this.idUsuarioCadastro = idUsuarioCadastro;
     }
 
-    public String getAno() {
+    public Integer getAno() {
         return this.ano;
     }
 
-    public void setAno(String ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 

@@ -1,6 +1,7 @@
 package inova.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,8 +28,8 @@ public class Meta implements Serializable{
     private String direcao;
     private Long idIndicador;
     private Long idUsuarioCadastro;
-    private String dtInicio;
-    private String dtFim;
+    private Calendar dtInicio;
+    private Calendar dtFim;
     private String rotulo;
     private Character excluido;
 
@@ -88,21 +89,23 @@ public class Meta implements Serializable{
         this.idUsuarioCadastro = idUsuarioCadastro;
     }
 
-    public String getDInicio() {
-        return this.dtInicio;
+    public Calendar getDtInicio() {
+        return dtInicio;
     }
 
-    public void setDInicio(String dtInicio) {
+    public void setDtInicio(Calendar dtInicio) {
         this.dtInicio = dtInicio;
     }
 
-    public String getDFim() {
-        return this.dtFim;
+    public Calendar getDtFim() {
+        return dtFim;
     }
 
-    public void setDFim(String dtFim) {
+    public void setDtFim(Calendar dtFim) {
         this.dtFim = dtFim;
     }
+
+
 
     public String getRotulo() {
         return this.rotulo;
